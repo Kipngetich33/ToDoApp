@@ -61,11 +61,7 @@ class TodoDetailApiView(APIView):
             )
 
         serializer = TodoSerializer(todo_instance)
-
-        # add custom field to serialized data
-        serialized_data = serializer.data 
-        serialized_data['id'] = todo_instance.id
-        return Response(serialized_data, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     # 4. Update
     def put(self, request, todo_id, *args, **kwargs):
